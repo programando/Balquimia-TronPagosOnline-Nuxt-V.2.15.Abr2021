@@ -1,0 +1,147 @@
+
+.logo {
+  margin-left: 10px;
+}
+ 
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F27F41;
+  font-size: 26px;
+}
+
+.formulario1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin: 0 10px;
+}
+
+
+
+.label1 {
+  margin-right: 10px;
+  font-size: 20px;
+  grid-column: 1 / 2;
+  grid-row: 1;
+  
+  
+  margin-top: 20px;
+}
+
+.input1 {
+  padding: 5px 10px;
+  grid-column: 2 / 2;
+  grid-row: 1;
+  margin-top: 20px;
+}
+
+.container-boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.boton1 {
+  background-color: #F27F41;
+  padding: 10px 20px;
+  border: none;
+  margin: 0 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.boton1:hover {
+  background-color: #D3500A
+}
+
+
+@media screen and (min-width: 470px) {
+
+  .formulario1 {
+    margin: 0 50px;
+  }
+  
+    
+}
+
+@media screen and (min-width: 650px) {
+
+  .formulario1 {
+    margin: 0 140px;
+  }
+  
+    
+}
+
+@media screen and (min-width: 800px) {
+
+  .formulario1 {
+    margin: 0 200px;
+  }
+  
+    
+}
+
+@media screen and (min-width: 900px) {
+
+  .formulario1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+    .label1 {
+      margin-right: 10px;
+      font-size: 20px;
+      grid-column: 2 / 4;
+      grid-row: 1;
+      margin-left: 40px;
+      margin-top: 20px;
+    }
+
+    .input1 {
+      padding: 5px 10px;
+      grid-column: 3 / 4;
+      grid-row: 1;
+      margin-top: 20px;
+    }
+    
+    .formulario1 {
+      margin: 0 40px;
+    }
+
+
+}
+
+@media screen and (min-width: 1200px) {
+
+  .formulario1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+    .label1 {
+      margin-right: 10px;
+      font-size: 20px;
+      grid-column: 2 / 4;
+      grid-row: 1;
+      margin-left: 40px;
+      margin-top: 20px;
+    }
+
+    .input1 {
+      padding: 5px 10px;
+      grid-column: 3 / 4;
+      grid-row: 1;
+      margin-top: 20px;
+    }
+    
+    .formulario1 {
+      margin: 0 160px;
+    }
+
+
+}
