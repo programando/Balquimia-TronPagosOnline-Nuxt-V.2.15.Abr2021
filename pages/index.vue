@@ -1,7 +1,10 @@
 <template>
   <div>
       <div class="logo">
-        <img src="/logo.png" alt="" />
+         <nuxt-link to="http://www.balquimia.com">
+         <img src="/logo.png" alt="" />
+         </nuxt-link>
+         
       </div>
       <div class="titulo">
         <h2>Pagos en linea</h2>
@@ -9,19 +12,22 @@
       <form> 
       <div class="">
         <div class="formulario1">
-          <label class="label1">Identificación cliente:</label>
-          <input class="input1" type="text" id="nit"  v-model="formUser.nit"/>
+          
+          <label class="label1">Identificación :</label>
+            <span> Dato obligatorio</span>
+          <input class="input1" type="text" id="nit"  v-model="formUser.nit"/>      
         </div>
+        
         <div class="formulario1">
-          <label class="label1">Nombre de Cliente :</label>
+          <label class="label1">Empresa :</label>
           <input class="input1" type="text"  id="cliente" v-model="formUser.cliente"/>
         </div>
         <div class="formulario1">
-          <label class="label1">Email ( Correo electrónico) :</label>
+          <label class="label1">Email : :</label>
           <input class="input1" type="email"  id="email" v-model="formUser.email" />
         </div>        
         <div class="formulario1">
-          <label class="label1">Valor total a pagar :</label>
+          <label class="label1">Valor a pagar :</label>
           <input class="input1" type="text" id="valor" v-model="formUser.valor"/>
         </div>
       </div>
@@ -48,12 +54,17 @@ export default {
                   cliente:'',
                   email:'',
                   valor:''
-          }
-
+          },
   }),
  
   methods: {
           psePay() {
+            let validacion= this.dataValidation();
+            if ( validacion === false  ) {
+              alert("dldl");
+              return ;
+            }
+            
             document.getElementById('description').value   = 'PED' + this.formUser.nit;
             document.getElementById('amount').value        = this.formUser.valor;
             document.getElementById('payerFullName').value = this.formUser.cliente;
@@ -61,7 +72,7 @@ export default {
             document.getElementById('payerDocument').value = this.formUser.nit;
             document.getElementById('referenceCode').value = this.formUser.nit;
             document.getElementById('signature').value     = this.signatureMD5();
-            document.psePayForm.submit();      
+            //document.psePayForm.submit();      
 
           },
 
@@ -70,7 +81,14 @@ export default {
             let valor     = this.formUser.valor;
             let signature = process.env.SIGNATURE + nit + valor +  "~COP";
             return md5( signature);
-         } 
+         } ,
+
+         dataValidation() {
+            let message='';
+            if ( this.formUser.nit.length==0){
+                message ='';
+            }
+         },
 
   },
  
