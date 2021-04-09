@@ -10,13 +10,16 @@
       </div>
       <form class="md:flex mx-4 md:mx-10 mt-4 lg:mt-10 lg:mx-16 justify-center">
         <div class="hidden md:px-10 py-4 md:grid  md:border-r-2 lg:border-none w-3/6">
-          <div class="md:mt-52 lg:mt-24 grid md:block lg:pl-16 xl:pl-24">
+        <div class="flex justify-center">
+          <div class="md:mt-52 lg:mt-24">
             <label class="text-lg md:text-xl">Pin para pago electronico</label>
             <input class="px-6 py-1 rounded-lg  border focus:outline-none lg:block mt-2 w-72" type="text">
             <div>
               <p class="text-primary">Texto de error</p>
             </div>
           </div>
+        </div>
+          
         </div>
 
         <div class="hidden md:grid md:px-10 py-4  lg:border-l-2 w-3/6">
@@ -41,13 +44,7 @@
               <p class="text-primary">Texto de error</p>
             </div>
           </div>        
-          <div class="grid lg:grid-cols-2">
-            <label class="text-lg md:text-xl lg:ml-20 mt-2">Valor a pagar :</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72" type="text" id="valor" v-model="formUser.valor"/>
-            <div class="lg:col-start-2">
-              <p class="text-primary">Texto de error</p>
-            </div>
-          </div>
+          
           <div class="grid lg:grid-cols-2">
             <label class="text-lg md:text-xl lg:ml-20 mt-2">Nro pedido :</label>
             <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72" type="text" id="valor" v-model="formUser.valor"/>
@@ -66,31 +63,31 @@
               <p class="text-primary">Texto de error</p>
             </div>
           </div>
+          <div class="grid lg:grid-cols-2">
+            <label class="text-lg md:text-xl lg:ml-20 mt-2">Valor a pagar :</label>
+            <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72" type="text" id="valor" v-model="formUser.valor"/>
+            <div class="lg:col-start-2">
+              <p class="text-primary">Texto de error</p>
+            </div>
+          </div>
         </div>
 
         <!-- Responsive, pantallas pequeñas -->
      <div class="flex justify-center md:hidden">  
       <div class="md:hidden group block w-64">
         <button
+          @click.prevent="formPin = !formPin"
           class="w-full outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32"
         >
           <span class="pr-1  flex-1">Pin para pago electronico</span>
-          <span>
-            <svg
-              class="fill-current h-4 w-4 transform group-hover:-rotate-180
-              transition duration-150 ease-in-out"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
-          </span>
+          
         </button>
-        <ul
-          class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
-        transition duration-150 ease-in-out origin-top z-10 w-64"
+        <div v-if="formPin"
+          class="transition duration-150 ease-in-out"
+        >
+          <ul
+          class="bg-white border rounded-sm  
+          transition duration-150 ease-in-out origin-top z-10 w-64"
         >
 
           <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
@@ -111,30 +108,22 @@
             </div>
           </li>
         </ul>
+        </div>
+        
       </div>
     </div>
     <div class="flex justify-center md:hidden mb-10">
       <div class="md:hidden group block mt-4 w-64">
         <button
+        @click.prevent="formRegistro = !formRegistro"
           class="w-full outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32"
         >
           <span class="pr-1  flex-1">Pago libre registro</span>
-          <span>
-            <svg
-              class="fill-current h-4 w-4 transform group-hover:-rotate-180
-              transition duration-150 ease-in-out"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
-          </span>
+          
         </button>
         <ul
-          class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
-        transition duration-150 ease-in-out origin-top w-64"
+          v-if="formRegistro"
+          class="bg-white border rounded-sm origin-top w-64"
         >
 
           <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
@@ -166,15 +155,7 @@
               </div>
             </div>        
           </li>
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
-            <div class="grid lg:grid-cols-2">
-              <label class="text-lg md:text-xl lg:ml-20 mt-2">Valor a pagar :</label>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56" type="text" id="valor" v-model="formUser.valor"/>
-              <div class="lg:col-start-2">
-                <p class="text-primary">Texto de error</p>
-              </div>
-            </div>
-          </li>
+          
           <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
             <div class="grid lg:grid-cols-2">
               <label class="text-lg md:text-xl lg:ml-20 mt-2">Nro pedido :</label>
@@ -192,6 +173,15 @@
                 <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-40" type="text" id="valor" v-model="formUser.valor"/>
               </div>
               
+              <div class="lg:col-start-2">
+                <p class="text-primary">Texto de error</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+            <div class="grid lg:grid-cols-2">
+              <label class="text-lg md:text-xl lg:ml-20 mt-2">Valor a pagar :</label>
+              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56" type="text" id="valor" v-model="formUser.valor"/>
               <div class="lg:col-start-2">
                 <p class="text-primary">Texto de error</p>
               </div>
@@ -228,6 +218,9 @@
 export default {
   components: { FormPsePay },
     data:  ()=> ({
+          formPin: false,
+          formRegistro: false,
+
           formUser : {
                   nit:'',
                   cliente:'',
@@ -269,20 +262,19 @@ export default {
             }
          },
 
+
   },
+
+  
  
 }
 </script>
 
 <style>
   
-  li>ul                 { transform: translatex(100%) scale(0) }
-  li:hover>ul           { transform: translatex(101%) scale(1) }
-  li > button svg       { transform: rotate(-90deg) }
-  li:hover > button svg { transform: rotate(-270deg) }
 
-  .group:hover .group-hover\:scale-100 { transform: scale(1) }
-  .group:hover .group-hover\:-rotate-180 { transform: rotate(180deg) }
+  .group:hover .group-hover\:scale-100 {transform: rotate(180deg) }
+  .group:hover .group-hover\:-rotate-180 {transform: rotate(180deg)  }
   .scale-0 { transform: scale(0) }
   .min-w-32 { min-width: 8rem }
 </style>
