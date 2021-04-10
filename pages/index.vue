@@ -8,7 +8,7 @@
       </div>
 
       <!-- titulo principal -->
-      <div class="flex justify-center text-2xl md:text-3xl lg:text-5xl mt-4">
+      <div class="flex justify-center mt-4 text-2xl md:text-3xl lg:text-5xl">
         <h2 class="text-primary">Pagos en línea</h2>
       </div>
       
@@ -16,9 +16,13 @@
       <form class="justify-center mx-4 mt-4 md:flex md:mx-10 lg:mt-10 lg:mx-16">
         <div class="hidden w-3/6 py-4 md:px-10 md:grid md:border-r-2 lg:border-none">
         <div class="flex justify-center">
-          <div class="md:mt-52 lg:mt-24">
-            <label class="text-lg md:text-xl">Pin para pago electronico</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none focus:border-primary lg:block mt-2 w-72" type="text">
+          <div class="text-center md:mt-52 lg:mt-24">
+            <label class="text-lg md:text-xl">Pin para pago electrónico</label>
+            <input 
+                v-model="pinValor"
+                @change="errorPin=''"
+                @blur="buscarPin"
+                class="px-6 py-1 mt-2 text-2xl text-center border rounded-lg focus:outline-none focus:border-primary lg:block w-72" type="text">
             <div>
               <p class="text-sm text-primary">{{ pinError}}</p>
             </div>
@@ -82,16 +86,16 @@
           class="transition duration-150 ease-in-out"
         >
           <ul
-          class=" transition duration-150 ease-in-out origin-top bg-white border rounded-sm"
+          class="transition duration-150 ease-in-out origin-top bg-white border rounded-sm "
         >
-          <li class="py-2 px-2 rounded-sm hover:bg-gray-100">
-            <div class="grid py-2 grid-cols-3 items-center">
+          <li class="px-2 py-2 rounded-sm hover:bg-gray-100">
+            <div class="grid items-center grid-cols-3 py-2">
               <label class="sm:text-lg sm:ml-10">Número de PIN</label>
               <input 
                 v-model="pinValor"
                 @change="errorPin=''"
                 @blur="buscarPin"
-                class="w-48 sm:w-56 sm:ml-4 px-2 py-1 mt-2  text-center border rounded-lg focus:outline-none focus:border-primary" type="text">  
+                class="w-48 px-2 py-1 mt-2 text-center border rounded-lg sm:w-56 sm:ml-4 focus:outline-none focus:border-primary" type="text">  
             </div>
             <div class="flex justify-center">
                 <p class="text-sm text-primary">{{ pinError}}</p>
@@ -119,22 +123,22 @@
           
         </div>
         <ul
-          class=" bg-white border rounded-sm"
+          class="bg-white border rounded-sm "
         >
 
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid grid-cols-3 items-center">
+            <div class="grid items-center grid-cols-3">
               <label class="mt-2 sm:text-lg sm:ml-10">Identificación :</label>
-              <input class="w-48 sm:w-56 ml-4   px-2 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="nit"  v-model="formUser.nro_identif"/>
+              <input class="w-48 px-2 py-1 mt-2 ml-4 border rounded-lg sm:w-56 focus:outline-none focus:border-primary" type="text" id="nit"  v-model="formUser.nro_identif"/>
             </div>
             <div class="flex justify-center">
                 <p class="text-sm text-primary">{{ errorNit }}</p>
             </div>      
           </li>
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid grid-cols-3 items-center">
+            <div class="grid items-center grid-cols-3">
               <label class="mt-2 sm:text-lg sm:ml-10">Cliente :</label>
-              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text"  id="cliente" v-model="formUser.nom_full"/>
+              <input class="w-48 px-4 py-1 mt-2 ml-4 border rounded-lg sm:w-56 focus:outline-none focus:border-primary" type="text"  id="cliente" v-model="formUser.nom_full"/>
             </div>
             <div class="flex justify-center">
                 <p class="text-sm text-primary"> {{ errorCliente }}</p>
@@ -142,9 +146,9 @@
           </li>
           
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid grid-cols-3 items-center">
+            <div class="grid items-center grid-cols-3">
               <label class="mt-2 sm:text-lg sm:ml-10">Email :</label>
-              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary " type="email"  id="email" v-model="formUser.email" />  
+              <input class="w-48 px-4 py-1 mt-2 ml-4 border rounded-lg sm:w-56 focus:outline-none focus:border-primary " type="email"  id="email" v-model="formUser.email" />  
             </div> 
             <div class="flex justify-center">
               <p class="text-sm text-primary"  >{{ errorEmail }}</p>
@@ -152,24 +156,24 @@
           </li>
           
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid grid-cols-3 items-center">
-              <label class="mt-2 sm:text-lg sm:ml-10">Nro pedido :</label>
-              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idpedido"/>
+            <div class="grid items-center grid-cols-3">
+              <label class="mt-2 sm:text-lg sm:ml-10">Nro. pedido :</label>
+              <input class="w-48 px-4 py-1 mt-2 ml-4 border rounded-lg sm:w-56 focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idpedido"/>
             </div>
           </li>
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid grid-cols-3 items-center">
-              <label class="mt-2 sm:text-lg sm:ml-10">Nro factura :</label>
+            <div class="grid items-center grid-cols-3">
+              <label class="mt-2 sm:text-lg sm:ml-10">Nro. factura :</label>
               <div class="flex">
-                <input class="inline sm:ml-4 w-12 sm:w-16 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text"/>
-                <input class="px-4 w-36 sm:w-40 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idFactura"/>
+                <input class="inline w-12 px-4 py-1 mt-2 border rounded-lg sm:ml-4 sm:w-16 focus:outline-none focus:border-primary" type="text"/>
+                <input class="px-4 py-1 mt-2 border rounded-lg w-36 sm:w-40 focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idFactura"/>
               </div>
             </div>
           </li>
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid grid-cols-3 items-center">
+            <div class="grid items-center grid-cols-3">
               <label class="mt-2 sm:text-lg sm:ml-10">Valor a pagar :</label>
-              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="valor_pin" 
+              <input class="w-48 px-4 py-1 mt-2 ml-4 border rounded-lg sm:w-56 focus:outline-none focus:border-primary" type="text" id="valor_pin" 
               v-on:keypress="numberFormat"
               v-model="formUser.valor_pin"/>
             </div>
