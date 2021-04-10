@@ -1,15 +1,18 @@
 <template>
   <div class="font-rale">
+      <!-- logo -->
       <div class="mt-2 ml-20">
          <nuxt-link to="http://www.balquimia.com">
           <img src="/logo.png" alt="" />
          </nuxt-link>
       </div>
 
-      <div class="flex justify-center text-2xl md:text-3xl lg:text-5xl ">
+      <!-- titulo principal -->
+      <div class="flex justify-center text-2xl md:text-3xl lg:text-5xl mt-4">
         <h2 class="text-primary">Pagos en línea</h2>
       </div>
-
+      
+      <!-- formulario en pantallas grandes -->
       <form class="justify-center mx-4 mt-4 md:flex md:mx-10 lg:mt-10 lg:mx-16">
         <div class="hidden w-3/6 py-4 md:px-10 md:grid md:border-r-2 lg:border-none">
         <div class="flex justify-center">
@@ -22,47 +25,43 @@
           </div>
         </div>
         </div>
-
         <div class="hidden w-3/6 py-4 md:grid md:px-10 lg:border-l-2">
           <div class="grid lg:grid-cols-2">
             <label class="mt-2 text-lg md:text-xl lg:ml-20">Identificación :</label>
-            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72" type="text" id="nit"  v-model="formUser.nro_identif"/>
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary w-72" type="text" id="nit"  v-model="formUser.nro_identif"/>
             <div class="lg:col-start-2">
               <p class="text-sm text-primary">{{ errorNit }}</p>
             </div>      
           </div>
           <div class="grid lg:grid-cols-2">
-            <label class="mt-2 text-lg md:text-xl lg:ml-20">Cliente :</label>
-            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72" type="text"  id="cliente" v-model="formUser.nom_full"/>
+            <label class="mt-2 text-lg md:text-xl lg:ml-20">Empresa :</label>
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary w-72" type="text"  id="cliente" v-model="formUser.nom_full"/>
             <div class="lg:col-start-2">
               <p class="text-sm text-primary"> {{ errorCliente }}</p>
             </div>
           </div>
           <div class="grid lg:grid-cols-2">
             <label class="mt-2 text-lg md:text-xl lg:ml-20">Email :</label>
-            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72 " type="email"  id="email" v-model="formUser.email" />
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary w-72 " type="email"  id="email" v-model="formUser.email" />
             <div class="lg:col-start-2">
               <p class="text-sm text-primary"  >{{ errorEmail }}</p>
             </div>
-          </div>        
-          
+          </div>               
           <div class="grid lg:grid-cols-2">
             <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro pedido :</label>
-            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72" type="text" id="valor" v-model="formUser.idpedido"/>
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary w-72" type="text" id="valor" v-model="formUser.idpedido"/>
  
           </div>
           <div class="grid lg:grid-cols-2">
             <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro factura :</label>
             <div class="flex">
-              <input class="inline w-16 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" v-model="formUser.prefFactura"/>
-              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor" v-model="formUser.idFactura"/>
+              <input class="inline w-16 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" v-model="formUser.prefFactura"/>
+              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idFactura"/>
             </div>
-
- 
           </div>
           <div class="grid lg:grid-cols-2">
             <label class="mt-2 text-lg md:text-xl lg:ml-20">Valor a pagar :</label>
-            <input class="px-6 py-1 mt-2 text-xl text-right border rounded-lg focus:outline-none w-72" type="text" id="valor_pin" 
+            <input class="px-6 py-1 mt-2 text-xl text-right border rounded-lg focus:outline-none focus:border-primary w-72" type="text" id="valor_pin" 
               v-on:keypress="numberFormat"
               v-model="formUser.valor_pin"/>
             <div class="lg:col-start-2">
@@ -73,47 +72,30 @@
 
         <!-- Responsive, pantallas pequeñas I-->
    <div class="flex justify-center md:hidden">  
-      <div class="block w-64 md:hidden group">
+      <div class="block md:hidden ">
         <div
-          class="flex items-center w-full px-3 py-1 bg-white border rounded-sm outline-none focus:outline-none min-w-32"
+          class="flex items-center justify-center w-full px-3 py-1 bg-white border rounded-sm "
         >
-          <span class="flex-1 pr-1">Pin para pago electrónico</span>
-          
+          <span class="pr-1 text-lg">Pin para pago electrónico</span>         
         </div>
         <div
           class="transition duration-150 ease-in-out"
         >
           <ul
-          class="z-10 w-64 transition duration-150 ease-in-out origin-top bg-white border rounded-sm"
+          class=" transition duration-150 ease-in-out origin-top bg-white border rounded-sm"
         >
-
-          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-        
-            <div class="grid py-2 text-center md:hidden">
-              <label class="">Número de PIN</label>
-
-            <input 
-              v-model="pinValor"
-              @change="errorPin=''"
-              @blur="buscarPin"
-              class="w-56 px-4 py-1 mt-2 text-xl text-center border rounded-lg focus:outline-none lg:block" type="text">
-            <div>
-              <p class="text-sm text-primary">{{ pinError}}</p>
+          <li class="py-2 px-2 rounded-sm hover:bg-gray-100">
+            <div class="grid py-2 grid-cols-3 items-center">
+              <label class="sm:text-lg sm:ml-10">Número de PIN</label>
+              <input 
+                v-model="pinValor"
+                @change="errorPin=''"
+                @blur="buscarPin"
+                class="w-48 sm:w-56 sm:ml-4 px-2 py-1 mt-2  text-center border rounded-lg focus:outline-none focus:border-primary" type="text">  
             </div>
- 
-              
-          </div>
-
-          </li>
-          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="flex justify-center">
-              <button class="px-4 py-1 mt-2 text-xl text-white border rounded-lg bg-primary" id="btnPagar" @click.prevent="psePay">Realizar pago</button>
+                <p class="text-sm text-primary">{{ pinError}}</p>
             </div>
-
-            <div class="flex justify-center">
-             <BtnGoToBalquimia></BtnGoToBalquimia>
-            </div>
-
           </li>
         </ul>
         </div>
@@ -128,85 +110,82 @@
      <!-- Responsive, pantallas pequeñas II-->
 
   <div class="flex justify-center mb-10 md:hidden">
-      <div class="block w-64 mt-4 md:hidden group">
+      <div class="block mt-4">
         <div
          
-          class="flex items-center w-full px-3 py-1 bg-white border rounded-sm outline-none focus:outline-none min-w-32"
+          class="flex items-center justify-center w-full px-2 py-1 bg-white border rounded-sm "
         >
-          <span class="flex-1 pr-1">Pago de libre registro</span>
+          <span class="pr-1 text-lg">Pago de libre registro</span>
           
         </div>
         <ul
-          class="w-64 origin-top bg-white border rounded-sm"
+          class=" bg-white border rounded-sm"
         >
 
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid lg:grid-cols-2">
-              <label class="mt-2 text-lg md:text-xl lg:ml-20">Identificación :</label>
-              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="nit"  v-model="formUser.nro_identif"/>
-              <div class="lg:col-start-2">
-                <p class="text-sm text-primary">{{ errorNit }}</p>
-              </div>      
+            <div class="grid grid-cols-3 items-center">
+              <label class="mt-2 sm:text-lg sm:ml-10">Identificación :</label>
+              <input class="w-48 sm:w-56 ml-4   px-2 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="nit"  v-model="formUser.nro_identif"/>
             </div>
             <div class="flex justify-center">
-              <p class="text-primary">Texto de error</p>
+                <p class="text-sm text-primary">{{ errorNit }}</p>
             </div>      
           </li>
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid lg:grid-cols-2">
-              <label class="mt-2 text-lg md:text-xl lg:ml-20">Cliente :</label>
-              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text"  id="cliente" v-model="formUser.nom_full"/>
-              <div class="lg:col-start-2">
+            <div class="grid grid-cols-3 items-center">
+              <label class="mt-2 sm:text-lg sm:ml-10">Cliente :</label>
+              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text"  id="cliente" v-model="formUser.nom_full"/>
+            </div>
+            <div class="flex justify-center">
                 <p class="text-sm text-primary"> {{ errorCliente }}</p>
               </div>
-            </div>
           </li>
           
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid lg:grid-cols-2">
-              <label class="mt-2 text-lg md:text-xl lg:ml-20">Email :</label>
-              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none " type="email"  id="email" v-model="formUser.email" />
-              <div class="lg:col-start-2">
-                 <p class="text-sm text-primary"  >{{ errorEmail }}</p>
-              </div>
-            </div>        
+            <div class="grid grid-cols-3 items-center">
+              <label class="mt-2 sm:text-lg sm:ml-10">Email :</label>
+              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary " type="email"  id="email" v-model="formUser.email" />  
+            </div> 
+            <div class="flex justify-center">
+              <p class="text-sm text-primary"  >{{ errorEmail }}</p>
+            </div>      
           </li>
           
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid lg:grid-cols-2">
-              <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro pedido :</label>
-              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor" v-model="formUser.idpedido"/>
-
+            <div class="grid grid-cols-3 items-center">
+              <label class="mt-2 sm:text-lg sm:ml-10">Nro pedido :</label>
+              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idpedido"/>
             </div>
           </li>
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid lg:grid-cols-2">
-              <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro factura :</label>
+            <div class="grid grid-cols-3 items-center">
+              <label class="mt-2 sm:text-lg sm:ml-10">Nro factura :</label>
               <div class="flex">
-                <input class="inline w-16 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text"/>
-                <input class="w-40 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor" v-model="formUser.idFactura"/>
+                <input class="inline sm:ml-4 w-12 sm:w-16 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text"/>
+                <input class="px-4 w-36 sm:w-40 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idFactura"/>
               </div>
-              
- 
             </div>
           </li>
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
-            <div class="grid lg:grid-cols-2">
-              <label class="mt-2 text-lg md:text-xl lg:ml-20">Valor a pagar :</label>
-              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor_pin" 
+            <div class="grid grid-cols-3 items-center">
+              <label class="mt-2 sm:text-lg sm:ml-10">Valor a pagar :</label>
+              <input class="w-48 sm:w-56 ml-4 px-4 py-1 mt-2 border rounded-lg focus:outline-none focus:border-primary" type="text" id="valor_pin" 
               v-on:keypress="numberFormat"
               v-model="formUser.valor_pin"/>
-              <div class="lg:col-start-2">
-                <p class="text-sm text-primary">{{ errorVrPagar }}</p>
-              </div>
+            </div>
+            <div class="flex justify-center">
+              <p class="text-sm text-primary">{{ errorVrPagar }}</p>
             </div>
           </li>
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             
             <div class="flex justify-center">
-              <button class="px-4 py-1 mt-2 text-xl text-white border rounded-lg bg-primary" id="btnPagar" @click.prevent="psePay">Realizar pago</button>
+              <button class="w-48 px-4 py-1 mt-2 text-xl text-white border rounded-lg bg-primary" id="btnPagar" @click.prevent="psePay">Realizar pago</button>
             </div>
-          <BtnGoToBalquimia></BtnGoToBalquimia>
+            <div class="flex justify-center mt-2">
+              <BtnGoToBalquimia></BtnGoToBalquimia>
+            </div>
+            
 
 
           </li>
@@ -217,11 +196,11 @@
  <!-- Fin Responsive, pantallas pequeñas II -->
 
     </form>
-      <div class="justify-center hidden mt-20 space-x-5 md:flex md:mt-8 -ml-11">
+      <div class="justify-center hidden mt-20 space-x-5 md:flex md:mt-8 ">
         
          <BtnGoToBalquimia></BtnGoToBalquimia>
 
-          <button class="px-4 py-1 text-xl text-white border rounded-lg bg-primary " id="btnPagar" @click.prevent="psePay">Realizar pago</button>    
+          <button class="w-48 px-4 py-1 text-xl text-white border rounded-lg bg-primary " id="btnPagar" @click.prevent="psePay">Realizar pago</button>    
     </div>
     <FormPsePay></FormPsePay>
  
