@@ -1,266 +1,364 @@
 <template>
   <div class="font-rale">
-      <div class="ml-20 mt-2">
+      <div class="mt-2 ml-20">
          <nuxt-link to="http://www.balquimia.com">
           <img src="/logo.png" alt="" />
          </nuxt-link>
       </div>
-      <div class="flex justify-center text-2xl mt-4 md:text-3xl lg:text-5xl ">
-        <h2 class="text-primary">Pagos en linea</h2>
+
+      <div class="flex justify-center text-2xl md:text-3xl lg:text-5xl ">
+        <h2 class="text-primary">Pagos en línea</h2>
       </div>
-      <form class="md:flex mx-4 md:mx-10 mt-4 lg:mt-10 lg:mx-16 justify-center">
-        <div class="hidden md:px-10 py-4 md:grid  md:border-r-2 lg:border-none w-3/6">
+
+      <form class="justify-center mx-4 mt-4 md:flex md:mx-10 lg:mt-10 lg:mx-16">
+        <div class="hidden w-3/6 py-4 md:px-10 md:grid md:border-r-2 lg:border-none">
         <div class="flex justify-center">
-          <div class="md:mt-52 lg:mt-24">
-            <label class="text-lg md:text-xl">Pin para pago electronico</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none lg:block mt-2 w-72" type="text">
+          <div class="text-center md:mt-52 lg:mt-24">
+            <label class="text-lg md:text-xl">Pin para pago electrónico</label>
+            <input 
+              v-model="pinValor"
+              @change="errorPin=''"
+              @blur="buscarPin"
+              class="px-6 py-1 mt-2 text-2xl text-center border rounded-lg focus:outline-none lg:block w-72" type="text">
             <div>
-              <p class="text-primary">Texto de error</p>
+              <p class="text-sm text-primary">{{ pinError}}</p>
             </div>
           </div>
         </div>
           
         </div>
 
-        <div class="hidden md:grid md:px-10 py-4  lg:border-l-2 w-3/6">
+        <div class="hidden w-3/6 py-4 md:grid md:px-10 lg:border-l-2">
           <div class="grid lg:grid-cols-2">
-            <label class="text-lg md:text-xl lg:ml-20 mt-2">Identificación :</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72" type="text" id="nit"  v-model="formUser.nit"/>
+            <label class="mt-2 text-lg md:text-xl lg:ml-20">Identificación :</label>
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72" type="text" id="nit"  v-model="formUser.nro_identif"/>
             <div class="lg:col-start-2">
-              <p class="text-primary">Texto de error</p>
+              <p class="text-sm text-primary">{{ errorNit }}</p>
             </div>      
           </div>
           <div class="grid lg:grid-cols-2">
-            <label class="text-lg md:text-xl lg:ml-20 mt-2">Empresa :</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72" type="text"  id="cliente" v-model="formUser.cliente"/>
+            <label class="mt-2 text-lg md:text-xl lg:ml-20">Cliente :</label>
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72" type="text"  id="cliente" v-model="formUser.nom_full"/>
             <div class="lg:col-start-2">
-              <p class="text-primary">Texto de error</p>
+              <p class="text-sm text-primary"> {{ errorCliente }}</p>
             </div>
           </div>
           <div class="grid lg:grid-cols-2">
-            <label class="text-lg md:text-xl lg:ml-20 mt-2">Email :</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72 " type="email"  id="email" v-model="formUser.email" />
+            <label class="mt-2 text-lg md:text-xl lg:ml-20">Email :</label>
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72 " type="email"  id="email" v-model="formUser.email" />
             <div class="lg:col-start-2">
-              <p class="text-primary">Texto de error</p>
+              <p class="text-sm text-primary"  >{{ errorEmail }}</p>
             </div>
           </div>        
           
           <div class="grid lg:grid-cols-2">
-            <label class="text-lg md:text-xl lg:ml-20 mt-2">Nro pedido :</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72" type="text" id="valor" v-model="formUser.valor"/>
-            <div class="lg:col-start-2">
-              <p class="text-primary">Texto de error</p>
-            </div>
+            <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro pedido :</label>
+            <input class="px-6 py-1 mt-2 border rounded-lg focus:outline-none w-72" type="text" id="valor" v-model="formUser.idpedido"/>
+ 
           </div>
           <div class="grid lg:grid-cols-2">
-            <label class="text-lg md:text-xl lg:ml-20 mt-2">Nro factura :</label>
+            <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro factura :</label>
             <div class="flex">
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 inline w-16" type="text"/>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56" type="text" id="valor" v-model="formUser.valor"/>
+              <input class="inline w-16 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" v-model="formUser.prefFactura"/>
+              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor" v-model="formUser.idFactura"/>
             </div>
-            
-            <div class="lg:col-start-2">
-              <p class="text-primary">Texto de error</p>
-            </div>
+
+ 
           </div>
           <div class="grid lg:grid-cols-2">
-            <label class="text-lg md:text-xl lg:ml-20 mt-2">Valor a pagar :</label>
-            <input class="px-6 py-1 rounded-lg  border focus:outline-none mt-2 w-72" type="text" id="valor" v-model="formUser.valor"/>
+            <label class="mt-2 text-lg md:text-xl lg:ml-20">Valor a pagar :</label>
+            <input class="px-6 py-1 mt-2 text-xl text-right border rounded-lg focus:outline-none w-72" type="text" id="valor_pin" 
+              v-on:keypress="numberFormat"
+              v-model="formUser.valor_pin"/>
             <div class="lg:col-start-2">
-              <p class="text-primary">Texto de error</p>
+              <p class="text-sm text-primary">{{ errorVrPagar }}</p>
             </div>
           </div>
         </div>
 
-        <!-- Responsive, pantallas pequeñas -->
-     <div class="flex justify-center md:hidden">  
-      <div class="md:hidden group block w-64">
+        <!-- Responsive, pantallas pequeñas I-->
+   <div class="flex justify-center md:hidden">  
+      <div class="block w-64 md:hidden group">
         <button
           @click.prevent="formPin = !formPin"
-          class="w-full outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32"
+          class="flex items-center w-full px-3 py-1 bg-white border rounded-sm outline-none focus:outline-none min-w-32"
         >
-          <span class="pr-1  flex-1">Pin para pago electronico</span>
+          <span class="flex-1 pr-1">Pin para pago electrónico</span>
           
         </button>
         <div v-if="formPin"
           class="transition duration-150 ease-in-out"
         >
           <ul
-          class="bg-white border rounded-sm  
-          transition duration-150 ease-in-out origin-top z-10 w-64"
+          class="z-10 w-64 transition duration-150 ease-in-out origin-top bg-white border rounded-sm"
         >
 
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
-            <div class="md:hidden py-2 grid">
-              <label class="">Pin para pago electronico</label>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none lg:block mt-2 w-56" type="text">
-              <div>
-                  <p class="text-primary">Texto de error</p>
-              </div>
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
+        
+            <div class="grid py-2 text-center md:hidden">
+              <label class="">Número de PIN</label>
+
+            <input 
+              v-model="pinValor"
+              @change="errorPin=''"
+              @blur="buscarPin"
+              class="w-56 px-4 py-1 mt-2 text-xl text-center border rounded-lg focus:outline-none lg:block" type="text">
+            <div>
+              <p class="text-sm text-primary">{{ pinError}}</p>
+            </div>
+ 
+              
           </div>
+
           </li>
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="flex justify-center">
-              <button class="border px-4 py-1 rounded-lg text-xl bg-primary text-white mt-2" id="btnCancelar">Cancelar Proceso</button>
+              <button class="px-4 py-1 mt-2 text-xl text-white border rounded-lg bg-primary" id="btnPagar" @click.prevent="psePay">Realizar pago</button>
             </div>
+
             <div class="flex justify-center">
-              <button class="border px-4 py-1 rounded-lg text-xl bg-primary text-white mt-2" id="btnPagar" @click.prevent="psePay">Pagar Pago</button>
+             <BtnGoToBalquimia></BtnGoToBalquimia>
             </div>
+
           </li>
         </ul>
         </div>
         
       </div>
     </div>
-    <div class="flex justify-center md:hidden mb-10">
-      <div class="md:hidden group block mt-4 w-64">
+    <!-- Fin Respnsive, pantallas pequeñas I -->
+
+
+
+
+     <!-- Responsive, pantallas pequeñas II-->
+
+  <div class="flex justify-center mb-10 md:hidden">
+      <div class="block w-64 mt-4 md:hidden group">
         <button
-        @click.prevent="formRegistro = !formRegistro"
-          class="w-full outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32"
+          @click.prevent="formRegistro = !formRegistro"
+          class="flex items-center w-full px-3 py-1 bg-white border rounded-sm outline-none focus:outline-none min-w-32"
         >
-          <span class="pr-1  flex-1">Pago libre registro</span>
+          <span class="flex-1 pr-1">Pago de libre registro</span>
           
         </button>
         <ul
           v-if="formRegistro"
-          class="bg-white border rounded-sm origin-top w-64"
+          class="w-64 origin-top bg-white border rounded-sm"
         >
 
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="grid lg:grid-cols-2">
-              <label class="text-lg md:text-xl lg:ml-20 mt-2">Identificación :</label>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56" type="text" id="nit"  v-model="formUser.nit"/>
+              <label class="mt-2 text-lg md:text-xl lg:ml-20">Identificación :</label>
+              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="nit"  v-model="formUser.nro_identif"/>
               <div class="lg:col-start-2">
-                <p class="text-primary">Texto de error</p>
+                <p class="text-sm text-primary">{{ errorNit }}</p>
               </div>      
             </div>
           
           </li>
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="grid lg:grid-cols-2">
-              <label class="text-lg md:text-xl lg:ml-20 mt-2">Empresa :</label>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56" type="text"  id="cliente" v-model="formUser.cliente"/>
+              <label class="mt-2 text-lg md:text-xl lg:ml-20">Cliente :</label>
+              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text"  id="cliente" v-model="formUser.nom_full"/>
               <div class="lg:col-start-2">
-                <p class="text-primary">Texto de error</p>
+                <p class="text-sm text-primary"> {{ errorCliente }}</p>
               </div>
             </div>
           </li>
           
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="grid lg:grid-cols-2">
-              <label class="text-lg md:text-xl lg:ml-20 mt-2">Email :</label>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56 " type="email"  id="email" v-model="formUser.email" />
+              <label class="mt-2 text-lg md:text-xl lg:ml-20">Email :</label>
+              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none " type="email"  id="email" v-model="formUser.email" />
               <div class="lg:col-start-2">
-                <p class="text-primary">Texto de error</p>
+                 <p class="text-sm text-primary"  >{{ errorEmail }}</p>
               </div>
             </div>        
           </li>
           
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="grid lg:grid-cols-2">
-              <label class="text-lg md:text-xl lg:ml-20 mt-2">Nro pedido :</label>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56" type="text" id="valor" v-model="formUser.valor"/>
-              <div class="lg:col-start-2">
-                <p class="text-primary">Texto de error</p>
-              </div>
+              <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro pedido :</label>
+              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor" v-model="formUser.idpedido"/>
+
             </div>
           </li>
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="grid lg:grid-cols-2">
-              <label class="text-lg md:text-xl lg:ml-20 mt-2">Nro factura :</label>
+              <label class="mt-2 text-lg md:text-xl lg:ml-20">Nro factura :</label>
               <div class="flex">
-                <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 inline w-16" type="text"/>
-                <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-40" type="text" id="valor" v-model="formUser.valor"/>
+                <input class="inline w-16 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text"/>
+                <input class="w-40 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor" v-model="formUser.idFactura"/>
               </div>
               
-              <div class="lg:col-start-2">
-                <p class="text-primary">Texto de error</p>
-              </div>
+ 
             </div>
           </li>
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="grid lg:grid-cols-2">
-              <label class="text-lg md:text-xl lg:ml-20 mt-2">Valor a pagar :</label>
-              <input class="px-4 py-1 rounded-lg  border focus:outline-none mt-2 w-56" type="text" id="valor" v-model="formUser.valor"/>
+              <label class="mt-2 text-lg md:text-xl lg:ml-20">Valor a pagar :</label>
+              <input class="w-56 px-4 py-1 mt-2 border rounded-lg focus:outline-none" type="text" id="valor_pin" 
+              v-on:keypress="numberFormat"
+              v-model="formUser.valor_pin"/>
               <div class="lg:col-start-2">
-                <p class="text-primary">Texto de error</p>
+                <p class="text-sm text-primary">{{ errorVrPagar }}</p>
               </div>
             </div>
           </li>
-          <li class="rounded-sm px-3 py-1 hover:bg-gray-100">
+          <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
+            
             <div class="flex justify-center">
-              <button class="border px-4 py-1 rounded-lg text-xl bg-primary text-white mt-2" id="btnCancelar">Cancelar Proceso</button>
+              <button class="px-4 py-1 mt-2 text-xl text-white border rounded-lg bg-primary" id="btnPagar" @click.prevent="psePay">Realizar pago</button>
             </div>
-            <div class="flex justify-center">
-              <button class="border px-4 py-1 rounded-lg text-xl bg-primary text-white mt-2" id="btnPagar" @click.prevent="psePay">Pagar Pago</button>
-            </div>
+          <BtnGoToBalquimia></BtnGoToBalquimia>
+
+
           </li>
         </ul>
       </div>
-    </div>
+    </div> 
+ <!-- Fin Responsive, pantallas pequeñas II -->
+
     </form>
-    <div class="md:flex hidden justify-center  mt-20 md:mt-4 -ml-11 space-x-5">
-      <button class="border px-4 py-1 rounded-lg text-xl bg-primary text-white " id="btnCancelar">Cancelar Proceso</button>
-      <button class="border px-4 py-1 rounded-lg text-xl bg-primary text-white " id="btnPagar" @click.prevent="psePay">Pagar Pago</button>    
+      <div class="justify-center hidden mt-20 space-x-5 md:flex md:mt-8 -ml-11">
+        
+         <BtnGoToBalquimia></BtnGoToBalquimia>
+
+          <button class="px-4 py-1 text-xl text-white border rounded-lg bg-primary " id="btnPagar" @click.prevent="psePay">Realizar pago</button>    
     </div>
     <FormPsePay></FormPsePay>
-
-
-     
-
-   
+ 
   </div>
 </template>
 
 <script>
  import FormPsePay from   "@/components/psePayForm";
  import md5  from "md5";
+ import PinesPgoElectronico from "@/models/PinesPgoElectronico";
+ import BtnGoToBalquimia from "@/components/buttonGoToBalquimia";
 export default {
-  components: { FormPsePay },
+  components: { FormPsePay, BtnGoToBalquimia },
     data:  ()=> ({
           formPin: false,
           formRegistro: false,
-
           formUser : {
-                  nit:'',
-                  cliente:'',
+                  nro_identif:'',
+                  nom_full:'',
                   email:'',
-                  valor:''
+                  valor_pin:'',
+                  idpedido:'',
+                  prefFactura:'',
+                  idFactura:'',
+                  valor_pin:''
           },
+          pinValor:'2104026',
+          pinError:'',
+          errorNit:'',
+          errorCliente:'',
+          errorEmail:'',
+          errorVrPagar:''
   }),
  
+  mounted() {
+      this.numberFormat();
+  },
+
   methods: {
+          buscarPin() {
+               this.pinError = '';
+               this.reiniciarForm();
+              PinesPgoElectronico.buscarPin ( this.pinValor)
+              .then( response => {
+                  if (!response.data || response.data.length == 0) {
+                    this.pinError = 'Número de PIN no encontrado!';
+                    this.reiniciarForm();
+                    return ;
+                  }
+                  let Data = response.data[0];
+                  this.formUser.nro_identif = Data.nro_identif;
+                  this.formUser.nom_full    = Data.nom_full;
+                  this.formUser.email       = Data.email;
+                  this.formUser.valor_pin   = Data.valor_pin.toLocaleString() ;
+              })
+          },
+          reiniciarForm () {
+                this.formUser.nro_identif = '';
+                this.formUser.nom_full    = '';
+                this.formUser.email       = '';
+                this.formUser.valor_pin   = '';
+                this.errorNit             = '';
+                this.errorCliente         = '';
+                this.errorEmail           = '';
+                this.errorVrPagar         = '';
+          },
           psePay() {
-            let validacion= this.dataValidation();
-            if ( validacion === false  ) {
-              alert("dldl");
+            let getErrors= this.dataValidation();
+            if ( getErrors === true  ) {
               return ;
             }
-            
-            document.getElementById('description').value   = 'PED' + this.formUser.nit;
-            document.getElementById('amount').value        = this.formUser.valor;
-            document.getElementById('payerFullName').value = this.formUser.cliente;
+            let valorPIN = parseInt(this.formUser.valor_pin.replace(/\./g, '') ) ;
+
+            document.getElementById('description').value   = this.getIdPedido();
+            document.getElementById('amount').value        = valorPIN;
+            document.getElementById('payerFullName').value = this.formUser.nom_full;
             document.getElementById('buyerEmail').value    = this.formUser.email;
-            document.getElementById('payerDocument').value = this.formUser.nit;
-            document.getElementById('referenceCode').value = this.formUser.nit;
-            document.getElementById('signature').value     = this.signatureMD5();
-            //document.psePayForm.submit();      
+            document.getElementById('payerDocument').value = this.formUser.nro_identif;
+            document.getElementById('referenceCode').value = this.formUser.nro_identif;
+            document.getElementById('signature').value     = this.signatureMD5( valorPIN );
+            document.psePayForm.submit();      
 
           },
 
-         signatureMD5() {
-            let nit       = this.formUser.nit +"~";
-            let valor     = this.formUser.valor;
-            let signature = process.env.SIGNATURE + nit + valor +  "~COP";
+         signatureMD5( valorPIN) {
+            let nit       = this.formUser.nro_identif +"~";
+            let signature = process.env.SIGNATURE + nit + valorPIN +  "~COP";
             return md5( signature);
          } ,
 
-         dataValidation() {
-            let message='';
-            if ( this.formUser.nit.length==0){
-                message ='';
+         getIdPedido() {
+            if ( this.formUser.idpedido.length > 0 ) {
+                return 'PED'+this.formUser.idpedido;
+            }else {
+                return 'NIT'+this.formUser.nro_identif;
             }
          },
+
+         dataValidation() {
+            let getError=false;
+            this.formUser.nom_full = this.formUser.nom_full.replace(/[^a-zA-Z ]/g, " ")
+
+            if ( this.formUser.nro_identif.length==0){
+               this.errorNit ='Identificación es un dato obligatorio';
+                getError = true;
+            }
+            if ( this.formUser.nom_full.length==0){
+               this.errorCliente ='Nombre de cliente  es un dato obligatorio';
+                getError = true;
+            }   
+            if ( this.formUser.email.length==0){
+               this.errorEmail ='Email de clientes es un dato obligatorio';
+                getError = true;
+            }    
+            if ( this.formUser.valor_pin.length==0){
+                 this.errorVrPagar ='No ha registrado el valor a pagar';
+                getError = true;            
+            }
+            return getError;
+         },
+
+         numberFormat ( ) {
+            var separador = document.getElementById('valor_pin');
+
+            separador.addEventListener('input', (e) => {
+                var entrada = e.target.value.split(','),
+                  parteEntera = entrada[0].replace(/\./g, ''),
+                  parteDecimal = entrada[1],
+                  salida = parteEntera.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+                  
+                e.target.value = salida + (parteDecimal !== undefined ? ',' + parteDecimal : '');
+            }, false);
+         }
 
 
   },

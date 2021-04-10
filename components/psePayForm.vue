@@ -1,6 +1,6 @@
 <template>
  
-            <form name="psePayForm" action="https://gateway.payulatam.com/ppp-web-gateway" method="post" id="">
+       <form name="psePayForm" action="https://gateway.payulatam.com/ppp-web-gateway" method="post" id="">
 
             <input type="hidden" name="description"         id="description"            value = "" />
             <input type="hidden" name="amount"              id="amount"                 value = "" />
