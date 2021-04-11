@@ -2,9 +2,10 @@
   <div class="font-rale">
       <!-- logo -->
       <div class="mt-2 ml-20">
-         <nuxt-link to="http://www.balquimia.com">
+      <a href="http://www.balquimia.com">
+         
           <img src="/logo.png" alt="" />
-         </nuxt-link>
+        </a>
       </div>
 
       <!-- titulo principal -->

@@ -1,5 +1,5 @@
 const autorestart = true;
-const watch = false;
+const watch = true;
 const maxMemoryRestart = '512M';
 
 module.exports = {
