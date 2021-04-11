@@ -4,7 +4,7 @@
       <div class="mt-2 ml-20">
       <a href="http://www.balquimia.com">
          
-          <img src="/logo.png" alt="" />
+          <img src="/logo.png" alt="Balquimia.com" />
         </a>
       </div>
 
