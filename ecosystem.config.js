@@ -9,6 +9,7 @@ module.exports = {
       instances: 1,
       autorestart,
       watch,
+      port: 3000,
       max_memory_restart: maxMemoryRestart,
       exec_mode: 'cluster',
       //instances: 'max', // Or a number of instances
