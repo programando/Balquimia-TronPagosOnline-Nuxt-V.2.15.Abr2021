@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link to="http://www.balquimia.com">
-      <button class="px-4 py-1 text-xl w-48 text-white border rounded-lg bg-primary " id="btnCancelar">Cancelar Proceso</button>
-       </nuxt-link>
+   <a href="http://www.balquimia.com">
+      <button class="w-48 px-4 py-1 text-xl text-white border rounded-lg bg-primary " id="btnCancelar">Cancelar Proceso</button>
+     </a>  
 </template>
