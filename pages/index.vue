@@ -229,7 +229,7 @@ export default {
                   idFactura:'',
                   valor_pin:''
           },
-          pinValor:'2104026',
+          pinValor:'',
           pinError:'',
           errorNit:'',
           errorCliente:'',
