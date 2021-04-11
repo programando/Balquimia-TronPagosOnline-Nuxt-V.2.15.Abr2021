@@ -165,8 +165,8 @@
           <li class="px-3 py-1 rounded-sm hover:bg-gray-100">
             <div class="grid items-center grid-cols-3">
               <label class="mt-2 sm:text-lg sm:ml-10">Nro. factura :</label>
-              <div class="flex">
-                <input class="inline w-12 px-4 py-1 mt-2 border rounded-lg sm:ml-4 sm:w-16 focus:outline-none focus:border-primary" type="text"/>
+              <div class="flex ml-4">
+                <input class="inline w-12 px-4 py-1 mt-2 border rounded-lg sm:w-16 focus:outline-none focus:border-primary" type="text"/>
                 <input class="px-4 py-1 mt-2 border rounded-lg w-36 sm:w-40 focus:outline-none focus:border-primary" type="text" id="valor" v-model="formUser.idFactura"/>
               </div>
             </div>
