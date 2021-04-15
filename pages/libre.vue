@@ -22,7 +22,7 @@
           <h1 class="text-center">Pago de Libre Registro</h1>
         </div>
         <div class="grid mx-4 sm:grid-cols-2">
-          <label class="flex justify-center md:justify-start md:ml-4">Identificación</label>
+          <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg">Identificación</label>
           <div class="flex justify-center">
             <input
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56"
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="grid mx-4 mt-2 sm:grid-cols-2">
-          <label class="flex justify-center md:justify-start md:ml-4">Cliente</label>
+          <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg">Cliente</label>
           <div class="flex justify-center">
             <input
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56"
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="grid mx-4 mt-2 sm:grid-cols-2">
-          <label class="flex justify-center md:justify-start md:ml-4">Email</label>
+          <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg">Email</label>
           <div class="flex justify-center">
             <input
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56"
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="grid mx-4 mt-2 sm:grid-cols-2">
-          <label class="flex justify-center md:justify-start md:ml-4">Vr. Pagar</label>
+          <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg">Vr. Pagar</label>
           <div class="flex justify-center">
             <input
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56"

@@ -4,26 +4,21 @@
       class="flex justify-center mt-2 -ml-4 md:justify-around md:ml-4 md:mt-8"
     >
       <a href="http://www.balquimia.com">
-        <img
-          class="h-24 mt-4 "
-          src="/logo.png"
-          alt="Balquimia.com"
-        />
+        <img class="h-24 mt-4 " src="/logo.png" alt="Balquimia.com" />
       </a>
       <div class="hidden lg:block">
         <img class="h-40" src="PayU.png" alt="pagos    " />
       </div>
     </div>
-
     <div class="flex items-center justify-center mt-8 md:mt-14">
       <div class="px-10 py-4 border border-primary">
-        <div
-          class="pb-4 text-lg sm:text-xl lg:text-2xl text-primary "
-        >
+        <div class="pb-4 text-lg sm:text-xl lg:text-2xl text-primary ">
           <h1 class="text-center">Pago con su numero de Pin</h1>
         </div>
         <div class="grid mx-4 sm:grid-cols-2">
-          <label class="flex justify-center md:justify-start md:ml-4">Numero de Pin</label>
+          <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg"
+            >Numero de Pin</label
+          >
           <div class="flex justify-center">
             <input
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56 pocision"

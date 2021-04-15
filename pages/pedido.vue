@@ -22,7 +22,7 @@
           <h1 class="text-center">Pago con su numero de Pedido</h1>
         </div>
         <div class="grid mx-4 sm:grid-cols-2">
-          <label class="flex justify-center md:justify-start md:ml-4">Numero de Pedido</label>
+          <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg">Numero de Pedido</label>
           <div class="flex justify-center">
             <input
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56 pocision"

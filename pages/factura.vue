@@ -23,7 +23,7 @@
           <h1 class="text-center">Pago con su numero de Factura</h1>
         </div>
         <div class="grid mx-4 sm:grid-cols-2">
-          <label class="flex justify-center md:justify-start md:ml-4">Numero de Factura</label>
+          <label class="flex justify-center lg:text-lg md:justify-start md:ml-4">Numero de Factura</label>
           <div class="flex justify-center">
             <input
               class="w-12 px-2 py-1 border rounded-lg focus:outline-none sm:w-16 pocision"
