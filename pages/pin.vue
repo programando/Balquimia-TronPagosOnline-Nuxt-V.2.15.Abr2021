@@ -27,15 +27,18 @@
             />
           </div>
         </div>
+
          <div class="mt-2">
           <InputDisable v-model="formUser.nro_identif" text="Identificación :" ></InputDisable>
         </div>  
+
          <div class="mt-2">
           <InputDisable text="Cliente :" v-model="formUser.nom_full"></InputDisable>
         </div>
         <div class="mt-2">
           <InputDisable text="Email :" v-model="formUser.email"></InputDisable>
         </div>
+        
         <div class="mt-2">
           <InputDisable text="Vr. a pagar:" v-model="formUser.valor_pagar"></InputDisable>
         </div> 
