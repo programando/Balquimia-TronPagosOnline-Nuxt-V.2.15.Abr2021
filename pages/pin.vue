@@ -1,6 +1,5 @@
 <template>
   <div class="mx-10 mt-4">
-
     <div class="flex justify-center mt-2 -ml-4 md:justify-around md:ml-4 md:mt-8"  >
       <a href="http://www.balquimia.com">
         <img class="mt-4 h-28 " src="/logo.png" alt="Balquimia.com" />
@@ -9,7 +8,6 @@
         <img class="h-28" src="PayU.png" alt="pagos    " />
       </div>
     </div>
-
     <div class="flex items-center justify-center mt-8 md:mt-14">
       <div class="px-10 py-4 border border-primary">
         <div class="pb-4 text-lg sm:text-xl lg:text-2xl text-primary ">
@@ -25,8 +23,13 @@
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56 pocision"
               type="text" v-model="pin"
             />
+            
+          </div>
+          <div v-if="inputError" class="flex justify-center sm:col-start-2 ">
+            <label class="text-sm text-primary">Pin incorrecto</label>
           </div>
         </div>
+        
 
          <div class="mt-2">
           <InputDisable v-model="formUser.nro_identif" text="Identificación :" ></InputDisable>
@@ -71,6 +74,7 @@ export default {
               email:'',
               valor_pagar:'',
           },
+        inputError: true
   }),
 
     methods: {

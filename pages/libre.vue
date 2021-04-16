@@ -29,6 +29,9 @@
               type="text"
             />
           </div>
+          <div v-if="inputErrorIdentificacion" class="flex justify-center sm:col-start-2 ">
+            <label class="text-sm text-primary">Identificacion incorrecta</label>
+          </div>
         </div>
         <div class="grid mx-4 mt-2 sm:grid-cols-2">
           <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg">Cliente</label>
@@ -37,6 +40,9 @@
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56"
               type="text"
             />
+          </div>
+          <div v-if="inputErrorCliente" class="flex justify-center sm:col-start-2 ">
+            <label class="text-sm text-primary">Cliente Error</label>
           </div>
         </div>
         <div class="grid mx-4 mt-2 sm:grid-cols-2">
@@ -47,6 +53,9 @@
               type="text"
             />
           </div>
+          <div v-if="inputErrorEmail" class="flex justify-center sm:col-start-2 ">
+            <label class="text-sm text-primary">Email incorrecto</label>
+          </div>
         </div>
         <div class="grid mx-4 mt-2 sm:grid-cols-2">
           <label class="flex justify-center md:justify-start md:ml-4 lg:text-lg">Vr. Pagar</label>
@@ -55,6 +64,9 @@
               class="w-48 px-2 py-1 border rounded-lg focus:outline-none sm:w-56"
               type="text"
             />
+          </div>
+          <div v-if="inputErrorPagar" class="flex justify-center sm:col-start-2 ">
+            <label class="text-sm text-primary">Monto a pagar Incorrecto</label>
           </div>
         </div>
         
@@ -81,7 +93,18 @@ export default {
   components: {
     InputDisable,
     ButtonCancel
-  }
+  },
+
+  data() {
+    return {
+      inputErrorIdentificacion: true,
+      inputErrorCliente: true,
+      inputErrorEmail: true,
+      inputErrorPagar: true
+      
+      
+    }
+  },
 };
 </script>
 

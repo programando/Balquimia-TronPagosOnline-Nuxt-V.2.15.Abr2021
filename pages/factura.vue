@@ -34,6 +34,9 @@
               type="text"
             />
           </div>
+          <div v-if="inputError" class="flex justify-center sm:col-start-2 ">
+            <label class="text-sm text-primary">Numero Factura incorrecto</label>
+          </div>
         </div>
         <div class="mt-2">
           <InputDisable text="Identificacion"></InputDisable>
@@ -70,7 +73,13 @@ export default {
   components: {
     InputDisable,
     ButtonCancel
-  }
+  },
+
+  data() {
+    return {
+      inputError: true
+    }
+  },
 };
 </script>
 
