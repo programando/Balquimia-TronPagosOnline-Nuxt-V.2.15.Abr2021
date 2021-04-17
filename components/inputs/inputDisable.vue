@@ -21,7 +21,6 @@ export default {
   data () {
     return {
       localValue: this.value,
-      inputError: true
     }
   },
   watch: {

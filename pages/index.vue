@@ -1,15 +1,7 @@
 <template>
-  <div class="font-rale">
-    <div
-      class="flex justify-center mt-2 -ml-4 md:justify-around md:ml-4 md:mt-8"
-    >
-      <a href="http://www.balquimia.com">
-        <img class="mt-4 h-28" src="/logo.png" alt="Balquimia.com" />
-      </a>
-      <div class="hidden lg:block">
-        <img class="h-28" src="PayU.png" alt="pagos    " />
-      </div>
-    </div>
+  <div class="font-robo">
+   
+      <HeaderLogos></HeaderLogos>
     
     <div class="flex justify-center mt-8">
       <h2 class="text-4xl lg:text-5xl text-primary">Pagos en Línea</h2>
@@ -66,16 +58,12 @@
                   >Libre Registro</label
                 >
               </div>
-            </nuxt-link>
+            </nuxt-link>  
+
             <div class="flex justify-center mt-4 mb-4 space-x-3">
-              <div>
-                <nuxt-link
-                  to="/"
-                  class="flex justify-center px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary"
-                >
-                  Cancelar</nuxt-link
-                >
-              </div>
+               <a href="http://www.balquimia.com" class="flex justify-center px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary">
+                         Cancelar
+                  </a>  
             </div>
           </form>
         </div>
@@ -87,5 +75,6 @@
 <script>
 export default {
     
+
   }
 </script>
