@@ -13,6 +13,7 @@
           <div class="flex justify-center">
             <input
               @blur="buscarPin"
+              v-on:keyup.enter="buscarPin"
               class="w-48 px-2 py-1 text-right border rounded-lg focus:outline-none sm:w-56"
               type="text" v-model="nro_pin"
             />
