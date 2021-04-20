@@ -15,6 +15,7 @@
           <div class="flex justify-center">
             <input
               @blur="buscarPedido"
+              v-on:keyup.enter="buscarPedido"
               class="w-48 px-2 py-1 text-right border rounded-lg focus:outline-none sm:w-56"
               type="text" v-model="id_ped"
             />
@@ -48,7 +49,7 @@
               Buscar
             </button>
           </div>
-          <div v-if="mostrarPagar" class="ml-2">       
+          <div v-else class="ml-2">       
             <button class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary" @click.prevent="psePay">
               Pagar
             </button>
@@ -85,7 +86,7 @@ export default {
         pinError: '',
 
         mostrarBuscar: true,
-        mostrarPagar: false
+        
   }),
 
     methods: {
@@ -107,7 +108,7 @@ export default {
 
                   // alternar el valor de los botones
                   this.mostrarBuscar = false;
-                  this.mostrarPagar = true;
+                 
               })  
           },
           psePay() {

@@ -19,7 +19,7 @@
             />
             <input
               class="px-2 py-1 text-right border rounded-lg w-36 focus:outline-none sm:w-40"
-              type="text" v-model="num_fact" @blur="buscarFactura"
+              type="text" v-model="num_fact" @blur="buscarFactura" v-on:keyup.enter="buscarFactura"
             />
           </div>
         </div>
@@ -46,7 +46,7 @@
               Buscar
             </button>
           </div>
-          <div v-if="mostrarPagar" class="ml-2">       
+          <div v-else class="ml-2">       
             <button class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary" @click.prevent="psePay">
               Pagar
             </button>
@@ -85,7 +85,7 @@ export default {
           },
         pinError: '',
         mostrarBuscar: true,
-        mostrarPagar: false
+        
   }),
 
     methods: {
@@ -105,9 +105,10 @@ export default {
 
                   // alternar el valor de los botones
                   this.mostrarBuscar = false;
-                  this.mostrarPagar = true;
+                  
               })  
           },
+          
           psePay() {
             let getErrors= this.dataValidation();
             if ( getErrors === true  ) {
