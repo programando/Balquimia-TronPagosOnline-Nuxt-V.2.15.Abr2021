@@ -41,6 +41,7 @@
 
         <div class="flex justify-center mt-4">
           <ButtonCancel text="Cancelar" to="/" width="w-28"></ButtonCancel>
+          
           <div v-if="mostrarBuscar" class="ml-2">       
             <button class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary" @click.prevent="buscarPin">
               Buscar
@@ -51,6 +52,7 @@
               Pagar
             </button>
           </div>
+
         </div>
       </div>
     </div>
@@ -107,7 +109,7 @@ export default {
                   this.mostrarPagar = true;
               })
           },
-          psePay() {
+          psePay() {    
             let getErrors= this.dataValidation();
             if ( getErrors === true  ) {
               return ;
