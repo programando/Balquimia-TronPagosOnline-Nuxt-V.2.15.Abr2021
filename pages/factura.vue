@@ -25,26 +25,29 @@
         </div>
         
        <div class="mt-2">
-          <InputDisable v-model="formUser.nro_identif" text="(*) Identificación :" ></InputDisable>
+          <InputDisable v-model="formUser.nro_identif" text="Identificación :" ></InputDisable>
         </div> 
 
           <div class="mt-2">
-          <InputDisable text="(*) Cliente :" v-model="formUser.nom_full"></InputDisable>
+          <InputDisable text="Cliente :" v-model="formUser.nom_full"></InputDisable>
         </div>
         <div class="mt-2">
-           <InputDisable text="(*) Email :" v-model="formUser.email"></InputDisable>
+           <InputDisable text="Email :" v-model="formUser.email"></InputDisable>
         </div>
       
         <div class="mt-2 text-right">
-          <InputDisable text="(*) Vr. a pagar:" v-model="formUser.valor_pagar"></InputDisable>
+          <InputDisable text="Vr. a pagar:" v-model="formUser.valor_pagar"></InputDisable>
         </div>    
 
         <div class="flex justify-center mt-4">
           <ButtonCancel text="Cancelar" to="/" width="w-28"></ButtonCancel>
-          <div class="ml-2">
-            <button
-              class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary"  @click.prevent="psePay"
-            >
+          <div v-if="mostrarBuscar" class="ml-2">       
+            <button class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary" @click.prevent="buscarFactura  ">
+              Buscar
+            </button>
+          </div>
+          <div v-if="mostrarPagar" class="ml-2">       
+            <button class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary" @click.prevent="psePay">
               Pagar
             </button>
           </div>
@@ -81,6 +84,8 @@ export default {
               valor_pagar:'',
           },
         pinError: '',
+        mostrarBuscar: true,
+        mostrarPagar: false
   }),
 
     methods: {
@@ -97,6 +102,10 @@ export default {
                   this.formUser.nom_full    = Data.nom_full;
                   this.formUser.email       = Data.email;
                   this.formUser.valor_pagar = this.formatNumber( Data.valor_pagar);
+
+                  // alternar el valor de los botones
+                  this.mostrarBuscar = false;
+                  this.mostrarPagar = true;
               })  
           },
           psePay() {

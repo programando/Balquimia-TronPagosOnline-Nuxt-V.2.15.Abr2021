@@ -1,8 +1,6 @@
 <template>
   <div class="mx-10 mt-4">
- 
       <HeaderLogos></HeaderLogos>
-
     <div class="flex items-center justify-center mt-8 md:mt-14">
       <div class="px-10 py-4 border border-primary">
         <div class="pb-4 text-lg sm:text-xl lg:text-2xl text-primary ">
@@ -27,28 +25,31 @@
         
 
          <div class="mt-2">
-          <InputDisable v-model="formUser.nro_identif" text="(*) Identificación :" ></InputDisable>
+          <InputDisable v-model="formUser.nro_identif" text="Identificación :" ></InputDisable>
         </div>  
 
          <div class="mt-2">
-          <InputDisable text="(*) Cliente :" v-model="formUser.nom_full"></InputDisable>
+          <InputDisable text="Cliente :" v-model="formUser.nom_full"></InputDisable>
         </div>
         <div class="mt-2">
-           <InputDisable text="(*) Email :" v-model="formUser.email"></InputDisable>
+           <InputDisable text="Email :" v-model="formUser.email"></InputDisable>
         </div>
         
         <div class="mt-2 text-right">
-          <InputDisable text="(*) Vr. a pagar:" v-model="formUser.valor_pagar"></InputDisable>
+          <InputDisable text="Vr. a pagar:" v-model="formUser.valor_pagar"></InputDisable>
         </div> 
 
         <div class="flex justify-center mt-4">
           <ButtonCancel text="Cancelar" to="/" width="w-28"></ButtonCancel>
-          <div class="ml-2">  
-            
+          <div v-if="mostrarBuscar" class="ml-2">       
+            <button class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary" @click.prevent="buscarPin">
+              Buscar
+            </button>
+          </div>
+          <div v-if="mostrarPagar" class="ml-2">       
             <button class="px-2 py-1 text-white border rounded-lg w-28 bg-primary border-primary" @click.prevent="psePay">
               Pagar
             </button>
-
           </div>
         </div>
       </div>
@@ -80,12 +81,15 @@ export default {
               valor_pagar:'',
           },
         pinError: '',
+
+        mostrarBuscar: true,
+        mostrarPagar: false
   }),
 
     methods: {
           buscarPin() {
                this.pinError = '';
- 
+
               PinesPgoElectronico.buscarPin ( this.nro_pin)
               .then( response => {
                   if (!response.data || response.data.length == 0) {
@@ -97,6 +101,10 @@ export default {
                   this.formUser.nom_full    = Data.nom_full;
                   this.formUser.email       = Data.email;
                   this.formUser.valor_pagar = this.formatNumber( Data.valor_pagar);
+                  
+                  // alternar el valor de los botones
+                  this.mostrarBuscar = false;
+                  this.mostrarPagar = true;
               })
           },
           psePay() {
