@@ -13,7 +13,7 @@
             document.getElementById('payerFullName').value = form.nom_full.trim();
             document.getElementById('referenceCode').value = form.nro_identif.trim();
             document.getElementById('signature').value = md5Key;
-            document.psePayForm.submit();     
+            //document.psePayForm.submit();     
         },
       
 
