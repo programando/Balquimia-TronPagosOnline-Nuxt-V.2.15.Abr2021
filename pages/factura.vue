@@ -19,7 +19,7 @@
             />
             <input
               class="px-2 py-1 text-right border rounded-lg w-36 focus:outline-none sm:w-40"
-              type="text" v-model="num_fact" @blur="buscarFactura" v-on:keyup.enter="buscarFactura"
+              type="text" v-model="num_fact" v-on:keyup.enter="buscarFactura"
             />
           </div>
         </div>

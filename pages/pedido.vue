@@ -14,7 +14,6 @@
           >
           <div class="flex justify-center">
             <input
-              @blur="buscarPedido"
               v-on:keyup.enter="buscarPedido"
               class="w-48 px-2 py-1 text-right border rounded-lg focus:outline-none sm:w-56"
               type="text" v-model="id_ped"
@@ -138,3 +137,8 @@ export default {
     },
 }
 </script>
+<style scoped>
+
+
+
+</style>
