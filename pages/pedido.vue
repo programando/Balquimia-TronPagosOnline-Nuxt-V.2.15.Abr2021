@@ -91,7 +91,10 @@ export default {
     methods: {
           buscarPedido() {
                this.pinError = '';
- 
+                 if ( this.id_ped.length == 0 ) {
+                   this.Message('Error!','Debe registrar un número de pedido','error' );
+                    return ;               
+                }
                PinesPgoElectronico.buscarPedido ( this.id_ped)
               .then( response => {
                   if (!response.data || response.data.length == 0) {

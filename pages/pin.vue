@@ -91,7 +91,10 @@ export default {
     methods: {
           buscarPin() {
                this.pinError = '';
-
+                if ( this.nro_pin.length == 0 ) {
+                   this.Message('Error!','Debe registrar un número de PIN','error' );
+                    return ;               
+                }
               PinesPgoElectronico.buscarPin ( this.nro_pin)
               .then( response => {
                   if (!response.data || response.data.length == 0) {

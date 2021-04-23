@@ -11,7 +11,7 @@
           <h1 class="text-center">Pago con número de factura</h1>
         </div>
         <div class="grid mx-4 sm:grid-cols-2">
-          <label class="flex justify-center lg:text-lg md:justify-start md:ml-4">Número de Factura</label>
+          <label class="flex justify-center lg:text-lg md:justify-start md:ml-4">Número de factura</label>
           <div class="flex justify-center">
             <input
               class="w-12 px-2 py-1 text-center border rounded-lg focus:outline-none sm:w-16 "
@@ -91,7 +91,10 @@ export default {
     methods: {
           buscarFactura() {
                this.pinError = '';
- 
+                if ( this.num_fact.length == 0 ) {
+                   this.Message('Error!','Debe registrar un número de factura','error' );
+                    return ;               
+                }
                PinesPgoElectronico.buscarFactura ( this.prfjo_rslcion, this.num_fact)
               .then( response => {
                   if (!response.data || response.data.length == 0) {
