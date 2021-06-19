@@ -15,7 +15,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
-
+ server: {
+    port: process.env.PORT
+  },
     env: {
       APP_NAME   : process.env.APP_NAME,
       SIGNATURE  : process.env.SIGNATURE,
